@@ -15,7 +15,7 @@ This version of the app does not have ->
 \
 **1**. Any flashing of protected pages
 \
-**2**. *Redux* (but uses next.js way if authentication)
+**2**. *Redux* (but uses next.js way of authentication)
 
   
 
