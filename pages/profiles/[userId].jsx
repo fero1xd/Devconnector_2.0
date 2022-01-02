@@ -16,50 +16,61 @@ const Profile = ({ user, profileData }) => {
                 <Link href='/profiles' className='btn btn-light'>
                     Back To Profiles
                 </Link>
-                {user &&
+                {user && profileData &&
                     user._id === profileData.user._id && (
                         <Link href='/edit-profile' className='btn btn-dark'>
                             Edit Profile
                         </Link>
                     )}
-                <div className='profile-grid my-1'>
-                    <ProfileTop profile={profileData} />
-                    <ProfileAbout profile={profileData} />
-                    <div className='profile-exp bg-white p-2'>
-                        <h2 className='text-primary'>Experience</h2>
-                        {profileData.experience.length > 0 ? (
-                            <>
-                                {profileData.experience.map((experience) => (
-                                    <ProfileExperience
-                                        key={experience._id}
-                                        experience={experience}
-                                    />
-                                ))}
-                            </>
-                        ) : (
-                            <h4>No experience credentials</h4>
+
+                {profileData ? <>
+
+                    <div className='profile-grid my-1'>
+                        <ProfileTop profile={profileData} />
+                        <ProfileAbout profile={profileData} />
+                        <div className='profile-exp bg-white p-2'>
+                            <h2 className='text-primary'>Experience</h2>
+                            {profileData.experience.length > 0 ? (
+                                <>
+                                    {profileData.experience.map((experience) => (
+                                        <ProfileExperience
+                                            key={experience._id}
+                                            experience={experience}
+                                        />
+                                    ))}
+                                </>
+                            ) : (
+                                <h4>No experience credentials</h4>
+                            )}
+                        </div>
+
+                        <div className='profile-edu bg-white p-2'>
+                            <h2 className='text-primary'>Education</h2>
+                            {profileData.education.length > 0 ? (
+                                <>
+                                    {profileData.education.map((education) => (
+                                        <ProfileEducation
+                                            key={education._id}
+                                            education={education}
+                                        />
+                                    ))}
+                                </>
+                            ) : (
+                                <h4>No education credentials</h4>
+                            )}
+                        </div>
+                        {profileData.githubusername && (
+                            <ProfileGithub username={profileData.githubusername} />
                         )}
                     </div>
 
-                    <div className='profile-edu bg-white p-2'>
-                        <h2 className='text-primary'>Education</h2>
-                        {profileData.education.length > 0 ? (
-                            <>
-                                {profileData.education.map((education) => (
-                                    <ProfileEducation
-                                        key={education._id}
-                                        education={education}
-                                    />
-                                ))}
-                            </>
-                        ) : (
-                            <h4>No education credentials</h4>
-                        )}
-                    </div>
-                    {profileData.githubusername && (
-                        <ProfileGithub username={profileData.githubusername} />
-                    )}
-                </div>
+
+                </> : <>
+
+                    <h4>No Profile for this User yet</h4>
+
+                </>}
+
             </section>
         </>
 
