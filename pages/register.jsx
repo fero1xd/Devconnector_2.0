@@ -22,6 +22,7 @@ const Register = () => {
         e.preventDefault()
         if (password !== password2) {
             toast.error('Passwords do not match');
+            return;
         }
 
         await registerUser({ name, email, password });
