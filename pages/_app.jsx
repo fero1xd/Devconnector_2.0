@@ -29,7 +29,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 
     const freeForAllRoutes = ctx.pathname === '/profiles' || ctx.pathname === '/profiles/[userId]'
 
-    const routesForGuests = ctx.pathname === '/login' || ctx.pathname === '/register' || ctx.pathname === '/' || ctx.pathname === '/register'
+    const routesForGuests = ctx.pathname === '/login' || ctx.pathname === '/register' || ctx.pathname === '/'
 
     if (!token) {
         if (protectedRoutes) {
